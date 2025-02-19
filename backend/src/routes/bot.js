@@ -1,52 +1,20 @@
-// import bot from '../services/botServices.js';
-// import { createPromptTemplate } from '../prompt/promptTemplate';
-// import { callModelWithTemplate } from '../config';
-
-// router.get('/', async (req, res) => {
-//     const { text } = req.query;
-//     if (!text) {
-//       return res
-//         .status(400)
-//         .json({ error: 'Missing required query parameter: text' });
-//     }
-//   try {
-//     const response = await bot({ text });
-//     res.json({ response });
-//   } catch (error) {
-//     console.error('Error during bot interaction:', error);
-//     res.status(500).json({ error: 'Failed to get response from bot' });
-//   }
-// });
-
-// router.post('/', async (req, res) => {
-//   try {
-//     const { messages, language } = req.body;
-//     const promptTemplate = await createPromptTemplate(language);
-//     const output = await callModelWithTemplate(
-//       { messages, language },
-//       promptTemplate,
-//     );
-
-//     res.json({
-//       messages: output.messages,
-//     });
-//   } catch (error) {
-//     console.error(error);
-//     res
-//       .status(500)
-//       .json({ error: 'An error occurred while processing the request' });
-//   }
-// });
-
 import express from 'express';
 
 import { getPersonalizedBotResponse } from '../chatbot.js';
 const router = express.Router();
+const SUPPORTED_LANGUAGES = [
+  'Ukrainian',
+  'English',
+  'Spanish',
+  'French',
+  'German',
+];
+let selectedLanguage = 'Ukrainian';
 router.post('/', async (req, res) => {
   try {
-    const { messages, language } = req.body;
+    const { messages } = req.body;
     console.log('Received messages:', messages);
-    console.log('Received language:', language);
+    console.log('Current language:', selectedLanguage);
 
     if (!messages || !Array.isArray(messages)) {
       return res.status(400).json({ error: 'Invalid messages format' });
@@ -54,14 +22,33 @@ router.post('/', async (req, res) => {
 
     const response = await getPersonalizedBotResponse(
       messages,
-      language || 'English',
+      selectedLanguage,
     );
 
-    res.json({ response });
+    res.json({ response, selectedLanguage });
   } catch (error) {
     console.error('Error processing chat:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
+});
+
+router.post('/language', (req, res) => {
+  const { language } = req.body;
+
+  if (!SUPPORTED_LANGUAGES.includes(language)) {
+    return res.status(400).json({ error: 'Unsupported language' });
+  }
+
+  selectedLanguage = language;
+  console.log('Language updated to:', selectedLanguage);
+  res.json({
+    message: `Language set to ${selectedLanguage}`,
+    selectedLanguage,
+  });
+});
+
+router.get('/language', (req, res) => {
+  res.json({ selectedLanguage });
 });
 
 export default router;
