@@ -1,5 +1,5 @@
 import readline from 'readline';
-import { getBotResponse } from './chatbot.js';
+import { getBotResponse } from './chat/chatbot.js';
 
 const rl = readline.createInterface({
   input: process.stdin,

@@ -5,7 +5,7 @@ import {
   StateGraph,
   MemorySaver,
 } from '@langchain/langgraph';
-import { model } from './config.js';
+import { model } from '../models/chatModels.js';
 
 export const callModel = async (state) => {
   const response = await model.invoke(state.messages);
