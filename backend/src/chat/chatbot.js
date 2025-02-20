@@ -120,6 +120,32 @@ export const getBotResponse = async (input, userId) => {
       throw new Error('Invalid input format');
     }
 
+    //   const chatHistory = await getChatHistory(userId);
+    //   const updatedMessages = [...chatHistory, ...input];
+
+    //   const { language, style } = await getUserSettings(userId);
+    //   const config = { configurable: { thread_id: uuidv4() } };
+    //   const prompt = await promptTemplate.invoke({
+    //     messages: updatedMessages,
+    //     language,
+    //     style,
+    //   });
+
+    //   if (!prompt || !Array.isArray(prompt.messages)) {
+    //     throw new Error('Invalid prompt format');
+    //   }
+
+    //   const output = await model.invoke({ messages: prompt.messages }, config);
+    //   const botResponse = output.messages[output.messages.length - 1];
+
+    //   updatedMessages.push(botResponse);
+    //   await saveChatHistory(userId, updatedMessages);
+
+    //   return botResponse;
+    // } catch (error) {
+    //   console.error('Error in getBotResponse:', error);
+    //   throw error;
+    // }
     const chatHistory = await getChatHistory(userId);
     const updatedMessages = [...chatHistory, ...input];
 
