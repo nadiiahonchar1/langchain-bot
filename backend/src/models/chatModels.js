@@ -8,7 +8,7 @@ if (!process.env.OPENAI_API_KEY) {
 }
 
 export const model = new ChatOpenAI({
-  model: 'gpt-4o-mini',
+  model: 'gpt-3.5-turbo',
   temperature: 0,
   openAIApiKey: process.env.OPENAI_API_KEY,
 });

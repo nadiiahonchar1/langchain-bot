@@ -3,7 +3,6 @@ import cors from 'cors';
 import chatRouter from './routes/api/chat.js';
 import userRouter from './routes/api/users.js';
 
-
 const app = express();
 
 
@@ -13,7 +12,7 @@ app.use(express.json());
 app.use('/api/users', userRouter);
 app.use('/api/chat', chatRouter);
 
-app.use((err, req, res, next) => {
+app.use((err, _, res, __) => {
   console.error(err);
   res
     .status(500)
