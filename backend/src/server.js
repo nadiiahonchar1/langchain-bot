@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import chatRouter from './routes/api/chat.js';
 import userRouter from './routes/api/users.js';
+import historyRouter from './routes/api/history.js';
 
 const app = express();
 
@@ -11,6 +12,7 @@ app.use(express.json());
 
 app.use('/api/users', userRouter);
 app.use('/api/chat', chatRouter);
+app.use('/api/history', historyRouter);
 
 app.use((err, _, res, __) => {
   console.error(err);
