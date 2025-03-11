@@ -1,35 +1,14 @@
 import express from 'express';
 import { v4 as uuidv4 } from 'uuid';
-import { getUserSettings, updateUserSettings } from '../../chat/userSettings.js';
+import {
+  getUserSettings,
+  updateUserSettings,
+} from '../../chat/userSettings.js';
 import { db } from '../../db/firebase.js';
+import { SUPPORTED_LANGUAGES } from '../../chat/constants.js';
+import { SUPPORTED_MESSAGE_STYLE } from '../../chat/constants.js';
 
 const router = express.Router();
-
-const SUPPORTED_LANGUAGES = [
-  'Ukrainian',
-  'English',
-  'Spanish',
-  'French',
-  'German',
-];
-
-const SUPPORTED_MESSAGE_STYLE = [
-  'formal',
-  'scientific',
-  'business',
-  'pirate',
-  'bard',
-  'fantasy',
-  'sarcastic',
-  'casual',
-  'meme',
-  'hacker',
-  'legal',
-  'future_ai',
-  'child',
-  'friendly',
-  'mentor',
-];
 
 router.post('/', async (req, res) => {
   try {

@@ -1,5 +1,5 @@
-import dotenv from 'dotenv';
 import { ChatOpenAI } from '@langchain/openai';
+import dotenv from 'dotenv';
 
 dotenv.config();
 

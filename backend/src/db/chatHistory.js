@@ -1,8 +1,7 @@
-import { db } from './firebase.js';
 import { FieldValue } from 'firebase-admin/firestore';
+import { db } from './firebase.js';
 
 export const saveChatHistory = async (userId, message) => {
-  console.log('Saving chat history message:', message);
   try {
     const chatRef = db.collection('chats').doc(userId);
 
@@ -12,8 +11,6 @@ export const saveChatHistory = async (userId, message) => {
       },
       { merge: true },
     );
-
-    console.log('Message saved to chat history');
   } catch (error) {
     console.error('Error saving chat history:', error);
   }

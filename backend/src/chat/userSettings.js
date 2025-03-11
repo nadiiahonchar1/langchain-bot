@@ -1,29 +1,6 @@
 import { db } from '../db/firebase.js';
-
-const SUPPORTED_LANGUAGES = [
-  'Ukrainian',
-  'English',
-  'Spanish',
-  'French',
-  'German',
-];
-const SUPPORTED_MESSAGE_STYLE = [
-  'formal',
-  'scientific',
-  'business',
-  'pirate',
-  'bard',
-  'fantasy',
-  'sarcastic',
-  'casual',
-  'meme',
-  'hacker',
-  'legal',
-  'future_ai',
-  'child',
-  'friendly',
-  'mentor',
-];
+import { SUPPORTED_LANGUAGES } from './constants.js';
+import { SUPPORTED_MESSAGE_STYLE } from './constants.js';
 
 export const getUserSettings = async (userId) => {
   try {

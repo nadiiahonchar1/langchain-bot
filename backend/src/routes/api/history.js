@@ -30,27 +30,6 @@ router.post('/:userId', async (req, res) => {
   }
 });
 
-
-// router.get('/:userId', async (req, res) => {
-//   try {
-//     const { userId } = req.params;
-
-//     const historyRef = db.collection('users').doc(userId).collection('history');
-//     const snapshot = await historyRef.orderBy('timestamp').get();
-
-//     if (snapshot.empty) {
-//       return res.status(404).json({ error: 'No history found' });
-//     }
-
-//     const history = snapshot.docs.map((doc) => doc.data());
-
-//     res.json(history);
-//   } catch (error) {
-//     console.error('Error fetching history:', error);
-//     res.status(500).json({ error: 'Failed to fetch history' });
-//   }
-// });
-
 router.get('/:userId', async (req, res) => {
   try {
     const { userId } = req.params;
