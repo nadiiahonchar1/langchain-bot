@@ -1,6 +1,8 @@
 import express from 'express';
 import { getBotResponse } from '../../chat/chatService.js';
 import { getUserSettings } from '../../chat/userSettings.js';
+import { getChatHistory } from '../../db/chatHistory.js';
+import { deleteChatHistory } from '../../db/chatHistory.js';
 
 const router = express.Router();
 
@@ -34,6 +36,30 @@ router.post('/', async (req, res) => {
   } catch (error) {
     console.error('Error in chat route:', error);
     res.status(500).json({ error: 'Failed to process message' });
+  }
+});
+
+router.get('/:userId', async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const history = await getChatHistory(userId);
+    res.json(history);
+  } catch (error) {
+    console.error('Error fetching chat history:', error);
+    res.status(500).json({ error: 'Failed to fetch chat history' });
+  }
+});
+
+router.delete('/:userId', async (req, res) => {
+  try {
+    const { userId } = req.params;
+    await deleteChatHistory(userId);
+    res.json({
+      message: `Chat history for user ${userId} deleted successfully`,
+    });
+  } catch (error) {
+    console.error('Error deleting chat history:', error);
+    res.status(500).json({ error: 'Failed to delete chat history' });
   }
 });
 
