@@ -10,26 +10,29 @@ function getLocale(request: NextRequest): string {
   const headers = {
     "accept-language": request.headers.get("accept-language") || "",
   };
-  console.log('headers', headers)
   const languages = new Negotiator({ headers }).languages();
   return match(languages, locales, defaultLocale);
 }
 
 export function middleware(request: NextRequest) {
-   const { pathname } = request.nextUrl;
-  console.log("pathname", pathname);
+  const { pathname } = request.nextUrl;
+
+  if (pathname === "/") {
+    const locale = getLocale(request);
+    return NextResponse.redirect(new URL(`/${locale}`, request.url));
+  }
+
   const pathnameHasLocale = locales.some(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   );
 
   if (pathnameHasLocale) return;
+
   const locale = getLocale(request);
   request.nextUrl.pathname = `/${locale}${pathname}`;
   return NextResponse.redirect(request.nextUrl);
 }
 
 export const config = {
-  matcher: [
-    "/((?!_next).*)",
-  ],
+  matcher: ["/((?!_next).*)"],
 };
