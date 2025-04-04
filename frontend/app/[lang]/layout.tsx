@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
+import { getDictionary } from "./dictionaries";
+import LanguageSwitcher from "../components/LanguageSwitcher";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,11 +36,17 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: Promise<{ lang: "uk" | "en" | "es" | "fr" | "de" }>;
 }>) {
+  const { lang } = await params;
+  const dict = await getDictionary(lang);
+
   return (
     <html lang={(await params).lang}>
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <header>This is header</header>
+      <body className={`${geistSans.variable} ${geistMono.variable} page`}>
+        <header>
+          <LanguageSwitcher />
+        </header>
         {children}
+        <footer>{dict.footerMessage}</footer>
       </body>
     </html>
   );

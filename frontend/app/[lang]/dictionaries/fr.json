@@ -1,4 +1,5 @@
 {
   "welcomeMessage": "Bienvenue sur le chat!",
-  "sendButton": "Envoyer"
+  "sendButton": "Envoyer",
+  "footerMessage": "Ce site vous donnera l'interlocuteur idéal avec qui vous pourrez discuter de tout"
 }
