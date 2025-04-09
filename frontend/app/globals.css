@@ -47,7 +47,7 @@ footer {
   display: flex;
   gap: 24px;
   background: var(--text);
-  color: var(--border);
+  color: var(--userMessage);
   width: 100%;
   padding: 1rem;
   justify-content: center;

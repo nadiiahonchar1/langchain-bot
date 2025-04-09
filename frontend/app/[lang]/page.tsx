@@ -1,12 +1,13 @@
 import styles from "./page.module.css";
 import { getDictionary } from "./dictionaries";
+import { SUPPORTED_LANGUAGES } from "../constants/languages";
 
 export default async function Home({
   params,
 }: {
-  params: Promise<{ lang: "uk" | "en" | "es" | "fr" | "de" }>;
+  params: { lang: (typeof SUPPORTED_LANGUAGES)[number] };
 }) {
-  const { lang } = await params;
+  const { lang } = params;
   const dict = await getDictionary(lang);
   return (
     <div>

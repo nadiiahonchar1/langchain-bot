@@ -1,5 +1,7 @@
 {
   "welcomeMessage": "Welcome to the chat!",
   "sendButton": "Send",
-  "footerMessage": "This site will give you the perfect conversation partner with whom you can chat about anything"
+  "footerMessage": "This site will give you the perfect conversation partner with whom you can chat about anything",
+  "languageMessage": "Choose a language that is convenient for you",
+  "loading": "Завантаження"
 }

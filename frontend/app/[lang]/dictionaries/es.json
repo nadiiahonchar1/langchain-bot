@@ -1,5 +1,7 @@
 {
   "welcomeMessage": "¡Bienvenidos al chat!",
   "sendButton": "Enviar",
-  "footerMessage": "Este sitio te brindará el interlocutor perfecto con quien podrás charlar sobre cualquier tema"
+  "footerMessage": "Este sitio te brindará el interlocutor perfecto con quien podrás charlar sobre cualquier tema",
+  "languageMessage": "Elija un idioma que sea conveniente para usted",
+  "loading": "Cargando"
 }

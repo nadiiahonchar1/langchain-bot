@@ -2,10 +2,17 @@
 
 import { usePathname, useRouter } from "next/navigation";
 import { useTransition } from "react";
+import { SUPPORTED_LANGUAGES, LANGUAGE_LABELS } from "../constants/languages";
+// import { getDictionary } from "../[lang]/dictionaries";
 
-const languages = ["uk", "en", "es", "fr", "de"];
+type Props = {
+  dict: {
+    languageMessage: string;
+    loading: string;
+  };
+};
 
-export default function LanguageSwitcher() {
+export default function LanguageSwitcher({ dict }: Props) {
   const pathname = usePathname();
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
@@ -22,18 +29,19 @@ export default function LanguageSwitcher() {
       router.push(newPath);
     });
   };
+  // const dict = await getDictionary(lang);
 
   return (
     <div>
-      <label htmlFor="language">Language: </label>
+      <label htmlFor="language">{dict.languageMessage}</label>
       <select id="language" value={currentLang} onChange={handleChange}>
-        {languages.map((lang) => (
+        {SUPPORTED_LANGUAGES.map((lang) => (
           <option key={lang} value={lang}>
-            {lang.toUpperCase()}
+            {LANGUAGE_LABELS[lang]}
           </option>
         ))}
       </select>
-      {isPending && <span>Loading...</span>}
+      {isPending && <span>{dict.loading}...</span>}
     </div>
   );
 }

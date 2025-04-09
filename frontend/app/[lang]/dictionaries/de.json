@@ -1,5 +1,7 @@
 {
   "welcomeMessage": "Willkommen im Chat!",
   "sendButton": "Schicken",
-  "footerMessage": "Diese Seite bietet Ihnen den perfekten Gesprächspartner, mit dem Sie über alles chatten können"
+  "footerMessage": "Diese Seite bietet Ihnen den perfekten Gesprächspartner, mit dem Sie über alles chatten können",
+  "languageMessage": "Wählen Sie eine für Sie passende Sprache",
+  "loading": "Laden"
 }
