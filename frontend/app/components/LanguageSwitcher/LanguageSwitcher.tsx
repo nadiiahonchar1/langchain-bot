@@ -2,14 +2,14 @@
 
 import { usePathname, useRouter } from "next/navigation";
 import { useTransition } from "react";
-import { SUPPORTED_LANGUAGES, LANGUAGE_LABELS } from "../constants/languages";
-// import { getDictionary } from "../[lang]/dictionaries";
+import styles from "./languageSwitcher.module.css";
+import {
+  SUPPORTED_LANGUAGES,
+  LANGUAGE_LABELS,
+} from "../../constants/languages";
 
 type Props = {
-  dict: {
-    languageMessage: string;
-    loading: string;
-  };
+  dict: Pick<Dictionary, "languageMessage" | "loading">;
 };
 
 export default function LanguageSwitcher({ dict }: Props) {
@@ -29,19 +29,24 @@ export default function LanguageSwitcher({ dict }: Props) {
       router.push(newPath);
     });
   };
-  // const dict = await getDictionary(lang);
 
   return (
-    <div>
+    <div className={styles.languageSwitcher}>
       <label htmlFor="language">{dict.languageMessage}</label>
-      <select id="language" value={currentLang} onChange={handleChange}>
-        {SUPPORTED_LANGUAGES.map((lang) => (
-          <option key={lang} value={lang}>
-            {LANGUAGE_LABELS[lang]}
-          </option>
-        ))}
-      </select>
-      {isPending && <span>{dict.loading}...</span>}
+      <div className={styles.selectWrapper}>
+        <select id="language" value={currentLang} onChange={handleChange}>
+          {SUPPORTED_LANGUAGES.map((lang) => (
+            <option key={lang} value={lang}>
+              {LANGUAGE_LABELS[lang]}
+            </option>
+          ))}
+        </select>
+        <span
+          className={`${styles.loading} ${isPending ? styles.visible : ""}`}
+        >
+          {dict.loading}...
+        </span>
+      </div>
     </div>
   );
 }

@@ -7,7 +7,7 @@ export default async function Home({
 }: {
   params: { lang: (typeof SUPPORTED_LANGUAGES)[number] };
 }) {
-  const { lang } = params;
+  const { lang } = await params;
   const dict = await getDictionary(lang);
   return (
     <div>

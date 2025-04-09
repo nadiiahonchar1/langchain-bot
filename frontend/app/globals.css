@@ -34,23 +34,21 @@ a {
 
 .page {
   display: grid;
-  grid-template-rows: 20px 1fr 20px;
+  grid-template-rows: auto 1fr auto;
   align-items: center;
   justify-items: center;
   min-height: 100svh;
-  gap: 64px;
   font-family: var(--font-geist-sans);
 }
 
 footer {
-  grid-row-start: 3;
   display: flex;
-  gap: 24px;
   background: var(--text);
   color: var(--userMessage);
   width: 100%;
   padding: 1rem;
   justify-content: center;
+  align-items: center;
 }
 
 footer a {
@@ -67,13 +65,5 @@ footer img {
   .footer a:hover {
     text-decoration: underline;
     text-underline-offset: 4px;
-  }
-}
-
-@media (max-width: 600px) {
-  .footer {
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
   }
 }

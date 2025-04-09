@@ -1,0 +1,51 @@
+.languageSwitcher {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.selectWrapper {
+  position: relative;
+  display: inline-block;
+  height: 40px;
+  transition: width 0.3s ease;
+  width: 100%;
+  min-width: 120px;
+}
+
+.selectWrapper select {
+  width: 100%;
+  height: 100%;
+  font: inherit;
+  padding: 0 8px;
+  z-index: 1;
+  transition: width 0.3s ease;
+}
+
+.loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(255, 255, 255, 0.8);
+  color: #333;
+  font: inherit;
+
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 2;
+}
+
+.loading.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
