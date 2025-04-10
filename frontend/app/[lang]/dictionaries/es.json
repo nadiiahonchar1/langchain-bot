@@ -3,5 +3,23 @@
   "sendButton": "Enviar",
   "footerMessage": "Este sitio te brindará el interlocutor perfecto con quien podrás charlar sobre cualquier tema",
   "languageMessage": "Elija un idioma que sea conveniente para usted",
-  "loading": "Cargando"
+  "loading": "Cargando",
+  "messagesStyle": "Elige un estilo de comunicación",
+  "style": {
+    "formal": "formal",
+    "scientific": "científico",
+    "business": "de negocios",
+    "pirate": "pirata",
+    "bard": "bardo",
+    "fantasy": "de fantasía",
+    "sarcastic": "sarcástico",
+    "casual": "casual",
+    "meme": "de memes",
+    "hacker": "hacker",
+    "legal": "legal",
+    "future_ai": "IA del futuro",
+    "child": "infantil",
+    "friendly": "amigable",
+    "mentor": "mentor"
+  }
 }

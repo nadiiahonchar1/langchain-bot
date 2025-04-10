@@ -2,11 +2,11 @@
 
 import { usePathname, useRouter } from "next/navigation";
 import { useTransition } from "react";
-import styles from "./languageSwitcher.module.css";
+import styles from "../switchers.module.css";
 import {
   SUPPORTED_LANGUAGES,
   LANGUAGE_LABELS,
-} from "../../constants/languages";
+} from "../../../constants/languages";
 
 type Props = {
   dict: Pick<Dictionary, "languageMessage" | "loading">;

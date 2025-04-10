@@ -4,6 +4,6 @@
   color: var(--userMessage);
   width: 100%;
   padding: 1rem;
-  justify-content: center;
   align-items: center;
+  justify-content: space-evenly;
 }

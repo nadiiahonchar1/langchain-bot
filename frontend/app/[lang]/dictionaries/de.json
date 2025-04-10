@@ -3,5 +3,23 @@
   "sendButton": "Schicken",
   "footerMessage": "Diese Seite bietet Ihnen den perfekten Gesprächspartner, mit dem Sie über alles chatten können",
   "languageMessage": "Wählen Sie eine für Sie passende Sprache",
-  "loading": "Laden"
+  "loading": "Laden",
+  "messagesStyle": "Wählen Sie einen Kommunikationsstil",
+  "style": {
+    "formal": "formell",
+    "scientific": "wissenschaftlich",
+    "business": "geschäftlich",
+    "pirate": "piratenhaft",
+    "bard": "bardenhaft",
+    "fantasy": "fantasyartig",
+    "sarcastic": "sarkastisch",
+    "casual": "lässig",
+    "meme": "memehaft",
+    "hacker": "hackerhaft",
+    "legal": "juristisch",
+    "future_ai": "zukünftige KI",
+    "child": "kindlich",
+    "friendly": "freundlich",
+    "mentor": "mentorhaft"
+  }
 }

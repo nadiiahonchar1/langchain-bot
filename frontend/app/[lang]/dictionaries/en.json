@@ -3,5 +3,23 @@
   "sendButton": "Send",
   "footerMessage": "This site will give you the perfect conversation partner with whom you can chat about anything",
   "languageMessage": "Choose a language that is convenient for you",
-  "loading": "Завантаження"
+  "loading": "Loading",
+  "messagesStyle": "Choose a communication style",
+  "style": {
+    "formal": "formal",
+    "scientific": "scientific",
+    "business": "business",
+    "pirate": "pirate",
+    "bard": "bard",
+    "fantasy": "fantasy",
+    "sarcastic": "sarcastic",
+    "casual": "casual",
+    "meme": "meme",
+    "hacker": "hacker",
+    "legal": "legal",
+    "future_ai": "future_ai",
+    "child": "child",
+    "friendly": "friendly",
+    "mentor": "mentor"
+  }
 }

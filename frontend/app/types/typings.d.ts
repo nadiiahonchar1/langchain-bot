@@ -1,7 +1,4 @@
 type Dictionary = {
-  welcomeMessage: string;
-  sendButton: string;
-  footerMessage: string;
-  languageMessage: string;
-  loading: string;
+  [key: string]: string;
+  style: Record<string, string>;
 };

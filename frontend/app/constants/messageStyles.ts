@@ -1,0 +1,17 @@
+export const SUPPORTED_MESSAGE_STYLE = [
+  "formal",
+  "scientific",
+  "business",
+  "pirate",
+  "bard",
+  "fantasy",
+  "sarcastic",
+  "casual",
+  "meme",
+  "hacker",
+  "legal",
+  "future_ai",
+  "child",
+  "friendly",
+  "mentor",
+] as const;;
