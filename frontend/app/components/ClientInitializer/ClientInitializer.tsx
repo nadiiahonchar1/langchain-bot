@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import ConsentModal from "../ConsentModal/ConsentModal";
+import { createUser } from "../../api/user";
 
 export default function ClientInitializer() {
   const [showModal, setShowModal] = useState(false);
@@ -15,15 +16,7 @@ export default function ClientInitializer() {
 
   const handleConsent = async (username: string) => {
     try {
-      const res = await fetch("http://localhost:3001/api/users", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username }),
-      });
-
-      if (!res.ok) throw new Error("Failed to create user");
-
-      const data = await res.json();
+      const data = await createUser(username);
       console.log({ data });
       localStorage.setItem("userId", data.userId);
     } catch (error) {

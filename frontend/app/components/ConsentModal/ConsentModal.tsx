@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import styles from "./modal.module.css";
 
 type ConsentModalProps = {
   onConfirm: (username: string) => void;
@@ -51,16 +52,21 @@ export default function ConsentModal({
   };
 
   return (
-    <dialog ref={dialogRef} className="modal">
+    <dialog ref={dialogRef} className={styles.modal}>
       <form onSubmit={handleSubmit} method="dialog">
         <p>Бажаєте зберігати історію чату та налаштування у базі даних?</p>
+        <p>
+          Для цього ми будемо зберігати ваш ідентифікатор в сховищі вашого
+          пристрою
+        </p>
+        <p>Якщо згодні - придумайте та введіть нікнейм і натисніть так</p>
         <input
           type="text"
           placeholder="Введіть нікнейм"
           ref={inputRef}
           required
         />
-        <div style={{ display: "flex", gap: "10px", marginTop: "10px" }}>
+        <div className={styles.yesButton}>
           <button type="submit">Так</button>
           <button
             type="button"
