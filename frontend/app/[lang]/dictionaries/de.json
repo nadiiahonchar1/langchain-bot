@@ -21,5 +21,10 @@
     "child": "kindlich",
     "friendly": "freundlich",
     "mentor": "mentorhaft"
-  }
+  },
+  "modalP1": "Möchten Sie den Chatverlauf und die Einstellungen in einer Datenbank speichern?",
+  "modalP2": "Dazu speichern wir Ihre ID im Speicher Ihres Geräts.",
+  "modalP3": "Wenn Sie einverstanden sind, überlegen Sie sich einen Spitznamen, geben Sie ihn ein und klicken Sie auf „Ja“",
+  "yes": "Ja",
+  "no": "Nein"
 }

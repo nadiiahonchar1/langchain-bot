@@ -21,5 +21,10 @@
     "child": "infantil",
     "friendly": "amigable",
     "mentor": "mentor"
-  }
+  },
+  "modalP1": "¿Quieres guardar el historial de chat y la configuración en una base de datos?",
+  "modalP2": "Para ello, almacenaremos su identificación en el almacenamiento de su dispositivo.",
+  "modalP3": "Si estás de acuerdo, crea un apodo e introdúcelo y haz clic en Sí",
+  "yes": "Sí",
+  "no": "No"
 }

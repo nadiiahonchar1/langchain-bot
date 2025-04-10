@@ -21,5 +21,10 @@
     "child": "child",
     "friendly": "friendly",
     "mentor": "mentor"
-  }
+  },
+  "modalP1": "Do you want to save chat history and settings in a database?",
+  "modalP2": "To do this, we will store your ID in your device storage.",
+  "modalP3": "If you agree - come up with and enter a nickname and click yes",
+  "yes": "Yes",
+  "no": "No"
 }
