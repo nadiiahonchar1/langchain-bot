@@ -6,11 +6,16 @@ import styles from "./modal.module.css";
 type ConsentModalProps = {
   onConfirm: (username: string) => void;
   onDecline: () => void;
+  dict: Pick<
+    Dictionary,
+    "modalP1" | "modalP2" | "modalP3" | "yes" | "no" | "modalPaceholder"
+  >;
 };
 
 export default function ConsentModal({
   onConfirm,
   onDecline,
+  dict,
 }: ConsentModalProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -54,20 +59,17 @@ export default function ConsentModal({
   return (
     <dialog ref={dialogRef} className={styles.modal}>
       <form onSubmit={handleSubmit} method="dialog">
-        <p>Бажаєте зберігати історію чату та налаштування у базі даних?</p>
-        <p>
-          Для цього ми будемо зберігати ваш ідентифікатор в сховищі вашого
-          пристрою
-        </p>
-        <p>Якщо згодні - придумайте та введіть нікнейм і натисніть так</p>
+        <p>{dict.modalP1}</p>
+        <p>{dict.modalP2}</p>
+        <p>{dict.modalP3}</p>
         <input
           type="text"
-          placeholder="Введіть нікнейм"
+          placeholder={dict.modalPaceholder}
           ref={inputRef}
           required
         />
         <div className={styles.yesButton}>
-          <button type="submit">Так</button>
+          <button type="submit">{dict.yes}</button>
           <button
             type="button"
             onClick={() => {
@@ -75,7 +77,7 @@ export default function ConsentModal({
               dialogRef.current?.close();
             }}
           >
-            Ні
+            {dict.no}
           </button>
         </div>
       </form>

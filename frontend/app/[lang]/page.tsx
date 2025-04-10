@@ -16,7 +16,7 @@ export default async function Home({
         <h1>{dict.welcomeMessage}</h1>
         <p>Hello</p>
       </main>
-      <ClientInitializer />
+      <ClientInitializer dict={dict} />
     </div>
   );
 }

@@ -26,5 +26,6 @@
   "modalP2": "Pour ce faire, nous stockerons votre identifiant dans le stockage de votre appareil.",
   "modalP3": "Si vous êtes d'accord, trouvez et entrez un surnom et cliquez sur oui",
   "yes": "Oui",
-  "no": "Non"
+  "no": "Non",
+  "modalPaceholder": "Entrez un pseudo"
 }

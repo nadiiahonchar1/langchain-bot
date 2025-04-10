@@ -26,5 +26,6 @@
   "modalP2": "To do this, we will store your ID in your device storage.",
   "modalP3": "If you agree - come up with and enter a nickname and click yes",
   "yes": "Yes",
-  "no": "No"
+  "no": "No",
+  "modalPaceholder": "Enter a nickname"
 }

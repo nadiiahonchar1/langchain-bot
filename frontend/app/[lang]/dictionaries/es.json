@@ -26,5 +26,6 @@
   "modalP2": "Para ello, almacenaremos su identificación en el almacenamiento de su dispositivo.",
   "modalP3": "Si estás de acuerdo, crea un apodo e introdúcelo y haz clic en Sí",
   "yes": "Sí",
-  "no": "No"
+  "no": "No",
+  "modalPaceholder": "Introduce un apodo"
 }
