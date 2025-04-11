@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import { getDictionary } from "./dictionaries";
 import Header from "../components/Header/Header";
+import Footer from "../components/Footer/footer";
 import { SUPPORTED_LANGUAGES } from "../constants/languages";
 
 const geistSans = Geist({
@@ -39,7 +40,7 @@ export default async function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} page`}>
         <Header dict={dict} />
         {children}
-        <footer>{dict.footerMessage}</footer>
+        <Footer dict={dict} />
       </body>
     </html>
   );

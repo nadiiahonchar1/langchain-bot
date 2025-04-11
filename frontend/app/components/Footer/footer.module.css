@@ -1,10 +1,21 @@
-.header {
+.footer {
   display: flex;
   background: var(--text);
   color: var(--userMessage);
   width: 100%;
   padding: 1rem;
+  /* justify-content: center; */
   align-items: center;
   justify-content: space-evenly;
   gap: 24px;
 }
+/* 
+footer a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+footer img {
+  flex-shrink: 0;
+} */

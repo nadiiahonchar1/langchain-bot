@@ -41,7 +41,7 @@ a {
   font-family: var(--font-geist-sans);
 }
 
-footer {
+/* footer {
   display: flex;
   background: var(--text);
   color: var(--userMessage);
@@ -59,7 +59,7 @@ footer a {
 
 footer img {
   flex-shrink: 0;
-}
+} */
 
 @media (hover: hover) and (pointer: fine) {
   .footer a:hover {
