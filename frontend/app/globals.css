@@ -40,30 +40,10 @@ a {
   min-height: 100svh;
   font-family: var(--font-geist-sans);
 }
-
-/* footer {
-  display: flex;
-  background: var(--text);
-  color: var(--userMessage);
-  width: 100%;
-  padding: 1rem;
-  justify-content: center;
-  align-items: center;
-}
-
-footer a {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-footer img {
-  flex-shrink: 0;
-} */
-
+/* 
 @media (hover: hover) and (pointer: fine) {
   .footer a:hover {
     text-decoration: underline;
     text-underline-offset: 4px;
   }
-}
+} */

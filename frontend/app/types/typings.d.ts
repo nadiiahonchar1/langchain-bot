@@ -3,10 +3,15 @@ type Dictionary = {
   style: Record<string, string>;
 };
 
-interface CreateUserResponse {
+interface UserResponse {
   userId: string;
   username: string;
   language: string;
   style: string;
   createdAt: string;
+}
+
+interface putMessages {
+  success: boolean;
+  message: string;
 }
