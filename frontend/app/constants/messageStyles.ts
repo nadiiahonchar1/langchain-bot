@@ -14,4 +14,4 @@ export const SUPPORTED_MESSAGE_STYLE = [
   "child",
   "friendly",
   "mentor",
-] as const;;
+] as const;

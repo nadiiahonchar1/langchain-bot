@@ -25,7 +25,9 @@ export const getUser = async (userId: string): Promise<UserResponse> => {
 
   if (!res.ok) {
     const error = await res.json();
-    throw new Error(error?.error || "Failed to create user");
+    throw new Error(
+      error?.error || "Something went wrong. Please try again later"
+    );
   }
 
   return res.json();
@@ -44,7 +46,9 @@ export const putUser = async (
 
   if (!res.ok) {
     const error = await res.json();
-    throw new Error(error?.error || "Failed to create user");
+    throw new Error(
+      error?.error || "Failed to put user. Please try again later"
+    );
   }
 
   return res.json();
