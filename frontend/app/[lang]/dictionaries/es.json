@@ -27,5 +27,7 @@
   "modalP3": "Si estás de acuerdo, crea un apodo e introdúcelo y haz clic en Sí",
   "yes": "Sí",
   "no": "No",
-  "modalPaceholder": "Introduce un apodo"
+  "modalPaceholder": "Introduce un apodo",
+  "greeting": "Bienvenido al chat,",
+  "linkAuth": "Para guardar su configuración y su historial de comunicaciones, puede registrarse"
 }

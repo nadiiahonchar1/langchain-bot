@@ -27,5 +27,7 @@
   "modalP3": "If you agree - come up with and enter a nickname and click yes",
   "yes": "Yes",
   "no": "No",
-  "modalPaceholder": "Enter a nickname"
+  "modalPaceholder": "Enter a nickname",
+  "greeting": "Welcome to the chat,",
+  "linkAuth": "To save your settings and communication history, you can register"
 }

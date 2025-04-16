@@ -27,5 +27,7 @@
   "modalP3": "Wenn Sie einverstanden sind, überlegen Sie sich einen Spitznamen, geben Sie ihn ein und klicken Sie auf „Ja“",
   "yes": "Ja",
   "no": "Nein",
-  "modalPaceholder": "Geben Sie einen Spitznamen ein"
+  "modalPaceholder": "Geben Sie einen Spitznamen ein",
+  "greeting": "Willkommen im Chat,",
+  "linkAuth": "Um Ihre Einstellungen und Ihren Kommunikationsverlauf zu speichern, können Sie sich registrieren"
 }

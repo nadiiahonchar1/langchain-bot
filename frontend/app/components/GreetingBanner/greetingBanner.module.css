@@ -1,0 +1,18 @@
+.banner {
+  margin: 0 1rem;
+  font-size: 1rem;
+}
+
+.registerButton {
+  background: transparent;
+  border: none;
+  color: #0070f3;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+  font-size: 1rem;
+}
+
+.registerButton:hover {
+  color: #0055aa;
+}
