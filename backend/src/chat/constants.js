@@ -1,11 +1,5 @@
 export const MAX_HISTORY = 100;
-export const SUPPORTED_LANGUAGES = [
-  'Ukrainian',
-  'English',
-  'Spanish',
-  'French',
-  'German',
-];
+export const SUPPORTED_LANGUAGES = ['uk', 'en', 'es', 'fr', 'de'];
 export const SUPPORTED_MESSAGE_STYLE = [
   'formal',
   'scientific',

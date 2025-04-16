@@ -25,9 +25,8 @@
 "use client";
 
 import { useEffect, useState, useTransition } from "react";
+import { usePathname } from "next/navigation";
 import styles from "./header.module.css";
-// import LanguageSwitcher from "../switchers/LanguageSwitcher/LanguageSwitcher";
-// import MessagesStyleSwitcher from "../switchers/MessagesStyleSwitcher/MessagesStyleSwitcher";
 import Switcher from "../switchers/switcher";
 import Logo from "../Logo/logo";
 import { getUser, putUser } from "../../api/user";
@@ -45,8 +44,11 @@ type Props = {
 };
 
 export default function Header({ dict }: Props) {
+  const pathname = usePathname();
+  const initialLangFromPath = pathname.split("/")[1] || "uk";
+
   const [userId, setUserId] = useState<string | null>(null);
-  const [language, setLanguage] = useState<string>("uk");
+  const [language, setLanguage] = useState<string>(initialLangFromPath);
   const [style, setStyle] = useState<string>("formal");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isPending, startTransition] = useTransition();
@@ -58,7 +60,6 @@ export default function Header({ dict }: Props) {
       setIsLoading(true);
       getUser(id)
         .then((user) => {
-          if (user?.language) setLanguage(user.language);
           if (user?.style) setStyle(user.style);
         })
         .catch(console.error)
@@ -66,20 +67,43 @@ export default function Header({ dict }: Props) {
     }
   }, []);
 
-  const updateLanguage = (newLang: string) => {
+  const updateLanguage = async (newLang: string) => {
+    console.log("Changing language to:", newLang);
     setLanguage(newLang);
-    if (userId) putUser(userId, newLang, style);
-    const segments = window.location.pathname.split("/");
+
+    if (userId) {
+      setIsLoading(true);
+      try {
+        await putUser(userId, newLang, style);
+      } catch (err) {
+        console.error("Failed to save user:", err);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    const segments = pathname.split("/");
     segments[1] = newLang;
     const newPath = segments.join("/");
+
     startTransition(() => {
-      window.location.assign(newPath);
+      window.location.assign(newPath); // Примусовий редірект
     });
   };
 
-  const updateStyle = (newStyle: string) => {
+  const updateStyle = async (newStyle: string) => {
     setStyle(newStyle);
-    if (userId) putUser(userId, language, newStyle);
+
+    if (userId) {
+      setIsLoading(true);
+      try {
+        await putUser(userId, language, newStyle);
+      } catch (err) {
+        console.error("Failed to save style:", err);
+      } finally {
+        setIsLoading(false);
+      }
+    }
   };
 
   return (
