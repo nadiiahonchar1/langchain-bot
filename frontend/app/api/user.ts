@@ -1,12 +1,14 @@
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export const createUser = async (
-  username: string
+  username: string,
+  language?: string,
+  style?: string
 ): Promise<UserResponse> => {
   const res = await fetch(`${API_BASE_URL}/api/users`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ username }),
+    body: JSON.stringify({ username, language, style }),
   });
 
   if (!res.ok) {
