@@ -12,7 +12,7 @@ const router = express.Router();
 
 router.post('/', async (req, res) => {
   try {
-    const { username } = req.body;
+    const { username, language = 'uk', style = 'formal' } = req.body;
 
     if (!username) {
       return res.status(400).json({ error: 'Username is required' });
@@ -24,8 +24,8 @@ router.post('/', async (req, res) => {
     const newUser = {
       userId,
       username,
-      language: 'uk',
-      style: 'formal',
+      language,
+      style,
       createdAt: new Date().toISOString(),
     };
 
