@@ -24,7 +24,7 @@ router.post('/', async (req, res) => {
     const newUser = {
       userId,
       username,
-      language: 'Ukrainian',
+      language: 'uk',
       style: 'formal',
       createdAt: new Date().toISOString(),
     };
