@@ -1,7 +1,6 @@
 import styles from "./page.module.css";
 import { getDictionary } from "./dictionaries";
 import { SUPPORTED_LANGUAGES } from "../constants/languages";
-import ClientInitializer from "../components/ClientInitializer/ClientInitializer";
 
 export default async function Home({
   params,
@@ -16,7 +15,6 @@ export default async function Home({
         <h1>{dict.welcomeMessage}</h1>
         <p>Hello</p>
       </main>
-      <ClientInitializer dict={dict} />
     </div>
   );
 }

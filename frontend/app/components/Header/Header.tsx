@@ -226,6 +226,8 @@ export default function Header({ dict }: Props) {
         })
         .catch(console.error)
         .finally(() => setIsLoading(false));
+    } else {
+      setShowRegisterModal(true);
     }
   }, []);
 
@@ -269,7 +271,6 @@ export default function Header({ dict }: Props) {
 
   const handleConfirmRegistration = async (username: string) => {
     try {
-      console.log(username, language, style);
       const data = await createUser(username, language, style);
       localStorage.setItem("userId", data.userId);
       setUserId(data.userId);
