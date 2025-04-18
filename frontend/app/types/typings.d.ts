@@ -15,3 +15,14 @@ interface putMessages {
   success: boolean;
   message: string;
 }
+
+type ChatMessage = {
+  role: "user" | "system";
+  content: string;
+};
+
+type GetChatResponse = ChatMessage[];
+
+type PostChatResponse = {
+  content: string;
+};

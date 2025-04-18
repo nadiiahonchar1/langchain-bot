@@ -1,6 +1,7 @@
 import styles from "./page.module.css";
 import { getDictionary } from "./dictionaries";
 import { SUPPORTED_LANGUAGES } from "../constants/languages";
+import Chat from "../components/Chat/Chat";
 
 export default async function Home({
   params,
@@ -13,7 +14,7 @@ export default async function Home({
     <div>
       <main className={styles.main}>
         <h1>{dict.welcomeMessage}</h1>
-        <p>Hello</p>
+        <Chat />
       </main>
     </div>
   );
