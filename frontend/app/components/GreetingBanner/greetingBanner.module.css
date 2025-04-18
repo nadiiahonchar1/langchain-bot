@@ -4,15 +4,20 @@
 }
 
 .registerButton {
-  background: transparent;
+  background: var(--userMessage);
+  border-radius: 8px;
   border: none;
-  color: #0070f3;
+  color: var(--text);
   cursor: pointer;
-  text-decoration: underline;
-  padding: 0;
+  padding: 4px;
   font-size: 1rem;
+  font-weight: 600;
+  max-width: 300px;
+  transition: background-color 0.5s ease, border 0.5s ease, color 0.5s ease;
 }
 
 .registerButton:hover {
-  color: #0055aa;
+  background-color: var(--text);
+  color: var(--userMessage);
+  border: var(--border) solid 1px;
 }
