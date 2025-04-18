@@ -32,7 +32,12 @@ router.post('/', async (req, res) => {
     }
 
     const response = await getBotResponse(messages, userId, language, style);
-    res.json({ response });
+    const content = response.content;
+    if (!content) {
+      return res.status(500).json({ error: 'No content in response' });
+    }
+
+    res.json({ content });
   } catch (error) {
     console.error('Error in chat route:', error);
     res.status(500).json({ error: 'Failed to process message' });
