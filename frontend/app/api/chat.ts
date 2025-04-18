@@ -14,3 +14,29 @@ export const getChat = async (userId: string) => {
 
     return res.json();
 }; 
+
+export const postChat = async (content: string, userId?: string) => {
+    const body: {
+      messages: { role: "user"; content: string }[];
+      userId?: string;
+    } = {
+      messages: [{ role: "user", content }],
+    };
+
+    if (userId) {
+      body.userId = userId;
+    }
+
+  const res = await fetch(`${API_BASE_URL}/api/chat`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  });
+
+  if (!res.ok) {
+    const error = await res.json();
+    throw new Error(error?.error || "Failed to create user");
+  }
+
+  return res.json();
+};
