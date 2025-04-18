@@ -5,7 +5,6 @@ export const createUser = async (
   language?: string,
   style?: string
 ): Promise<UserResponse> => {
-  console.log("inAPI", username, language, style);
   const res = await fetch(`${API_BASE_URL}/api/users`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
