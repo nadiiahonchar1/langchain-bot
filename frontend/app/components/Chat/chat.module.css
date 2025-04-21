@@ -1,0 +1,110 @@
+.chatWrapper {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 16px;
+  background-color: var(--background);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-family: "Segoe UI", sans-serif;
+  color: var(--text);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.welcome {
+  font-size: 16px;
+  color: var(--text);
+}
+
+.chatHeader {
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--text);
+}
+
+.messageList {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  scroll-behavior: smooth;
+}
+
+.message {
+  background-color: #ffffff;
+  padding: 10px 12px;
+  border-radius: 8px;
+  max-width: 80%;
+  white-space: pre-wrap;
+  border: 1px solid var(--border);
+  color: var(--text);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.userMessage {
+  align-self: flex-end;
+  background-color: var(--userMessage);
+}
+
+.botMessage {
+  align-self: flex-start;
+  background-color: var(--botMessage);
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.textarea {
+  resize: none;
+  min-height: 40px;
+  max-height: 200px;
+  overflow-y: auto;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  font-size: 14px;
+  line-height: 1.4;
+  font-family: inherit;
+  color: var(--text);
+  background-color: #fff;
+}
+
+.button {
+  background-color: var(--accent);
+  color: #fff;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:disabled {
+  background-color: #c5e1c8;
+  cursor: not-allowed;
+}
+
+.button:hover:not(:disabled) {
+  background-color: #66bb6a;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.message {
+  animation: fadeInUp 0.3s ease;
+}

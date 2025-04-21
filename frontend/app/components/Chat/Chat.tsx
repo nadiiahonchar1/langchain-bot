@@ -1,27 +1,38 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { getChat, postChat } from "../../api/chat";
+import styles from "./chat.module.css";
 
 export default function Chat() {
   const [userId, setUserId] = useState<string | null>(null);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const messagesEndRef = useRef<HTMLDivElement | null>(null);
+  const inputRef = useRef<HTMLTextAreaElement | null>(null);
 
   useEffect(() => {
     const storedId = localStorage.getItem("userId");
+    const draft = localStorage.getItem("draftMessage");
+
     if (storedId) {
       setUserId(storedId);
       getChat(storedId)
-        .then((data) => {
-          setMessages(data); // getChat повертає масив ChatMessage
-        })
-        .catch((error) => {
-          console.error("Failed to load chat history:", error);
-        });
+        .then((data) => setMessages(data))
+        .catch((error) => console.error("Failed to load chat history:", error));
     }
+
+    if (draft) setInput(draft);
   }, []);
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, [messages]);
 
   const handleSend = async () => {
     if (!input.trim()) return;
@@ -33,16 +44,11 @@ export default function Chat() {
 
     try {
       const res = await postChat(input, userId ?? undefined);
-
-      // Додаємо нову відповідь бота до чату
-      const botMessage: ChatMessage = { role: "system", content: res.content };
+      const botMessage: ChatMessage = {
+        role: "system",
+        content: res.content,
+      };
       setMessages((prev) => [...prev, botMessage]);
-
-      // Якщо повернувся новий userId
-      //   if (!userId && res.userId) {
-      //     localStorage.setItem("userId", res.userId);
-      //     setUserId(res.userId);
-      //   }
     } catch (error) {
       console.error("Error sending message:", error);
     } finally {
@@ -50,35 +56,56 @@ export default function Chat() {
     }
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      handleSend();
+    }
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setInput(e.target.value);
+    localStorage.setItem("draftMessage", e.target.value);
+  };
+
   return (
-    <div style={{ maxWidth: 600, margin: "0 auto", padding: 16 }}>
+    <div className={styles.chatWrapper}>
       {!userId && (
-        <div style={{ marginBottom: 16 }}>
-          <p>Вітаю, пропоную познайомитись!</p>
-        </div>
+        <p className={styles.welcome}>Вітаю, пропоную познайомитись!</p>
       )}
 
-      <p>Про що сьогодні поговоримо?</p>
+      <p className={styles.chatHeader}>Про що сьогодні поговоримо?</p>
 
-      <div style={{ marginBottom: 16 }}>
+      <div className={styles.messageList}>
         {messages.map((msg, index) => (
-          <div key={index} style={{ marginBottom: 8 }}>
+          <div
+            key={index}
+            className={`${styles.message} ${
+              msg.role === "user" ? styles.userMessage : styles.botMessage
+            }`}
+          >
             <strong>{msg.role === "user" ? "Ви:" : "Бот:"}</strong>{" "}
             {msg.content}
           </div>
         ))}
+        <div ref={messagesEndRef} />
       </div>
 
-      <div style={{ display: "flex", gap: 8 }}>
-        <input
-          type="text"
+      <div className={styles.inputWrapper}>
+        <textarea
           value={input}
+          ref={inputRef}
           placeholder="Напишіть щось..."
-          onChange={(e) => setInput(e.target.value)}
+          onChange={handleInputChange}
+          onKeyDown={handleKeyDown}
           disabled={loading}
-          style={{ flexGrow: 1 }}
+          className={styles.textarea}
         />
-        <button onClick={handleSend} disabled={loading}>
+        <button
+          onClick={handleSend}
+          disabled={loading}
+          className={styles.button}
+        >
           Надіслати
         </button>
       </div>
