@@ -3,14 +3,9 @@
 import { useEffect, useState } from "react";
 import { getChat, postChat } from "../../api/chat";
 
-type Message = {
-  role: string;
-  content: string;
-};
-
 export default function Chat() {
   const [userId, setUserId] = useState<string | null>(null);
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -18,31 +13,36 @@ export default function Chat() {
     const storedId = localStorage.getItem("userId");
     if (storedId) {
       setUserId(storedId);
-      getChat(storedId).then((data) => {
-        if (data?.messages) {
-          setMessages(data.messages);
-        }
-      });
+      getChat(storedId)
+        .then((data) => {
+          setMessages(data); // getChat повертає масив ChatMessage
+        })
+        .catch((error) => {
+          console.error("Failed to load chat history:", error);
+        });
     }
   }, []);
 
   const handleSend = async () => {
     if (!input.trim()) return;
-    const userMessage: Message = { role: "user", content: input };
 
+    const userMessage: ChatMessage = { role: "user", content: input };
     setMessages((prev) => [...prev, userMessage]);
     setInput("");
     setLoading(true);
 
     try {
       const res = await postChat(input, userId ?? undefined);
-      if (res.userId && !userId) {
-        localStorage.setItem("userId", res.userId);
-        setUserId(res.userId);
-      }
-      if (res?.messages) {
-        setMessages(res.messages);
-      }
+
+      // Додаємо нову відповідь бота до чату
+      const botMessage: ChatMessage = { role: "system", content: res.content };
+      setMessages((prev) => [...prev, botMessage]);
+
+      // Якщо повернувся новий userId
+      //   if (!userId && res.userId) {
+      //     localStorage.setItem("userId", res.userId);
+      //     setUserId(res.userId);
+      //   }
     } catch (error) {
       console.error("Error sending message:", error);
     } finally {
