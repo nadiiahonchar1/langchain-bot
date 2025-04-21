@@ -24,5 +24,10 @@
   "no": "No",
   "modalPaceholder": "Enter a nickname",
   "greeting": "Welcome to the chat,",
-  "linkAuth": "To save your settings and communication history, you can register"
+  "linkAuth": "To save your settings and communication history, you can register",
+  "welcomeStranger": "Welcome, I suggest we get acquainted!",
+  "smallTalk": "What shall we talk about today?",
+  "you": "You:",
+  "bot": "Bot:",
+  "writeInvitacion": "Write something..."
 }

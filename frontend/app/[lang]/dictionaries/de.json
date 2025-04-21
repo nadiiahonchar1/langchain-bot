@@ -24,5 +24,10 @@
   "no": "Nein",
   "modalPaceholder": "Geben Sie einen Spitznamen ein",
   "greeting": "Willkommen im Chat,",
-  "linkAuth": "Um Ihre Einstellungen und Ihren Kommunikationsverlauf zu speichern, können Sie sich registrieren"
+  "linkAuth": "Um Ihre Einstellungen und Ihren Kommunikationsverlauf zu speichern, können Sie sich registrieren",
+  "welcomeStranger": "Willkommen, ich schlage vor, wir lernen uns kennen!",
+  "smallTalk": "Worüber sprechen wir heute?",
+  "you": "Sie:",
+  "bot": "Bot:",
+  "writeInvitacion": "Schreiben Sie etwas..."
 }

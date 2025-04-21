@@ -4,7 +4,19 @@ import { useEffect, useRef, useState } from "react";
 import { getChat, postChat } from "../../api/chat";
 import styles from "./chat.module.css";
 
-export default function Chat() {
+export default function Chat({
+  dict,
+}: {
+  dict: Pick<
+    Dictionary,
+    | "sendButton"
+    | "welcomeStranger"
+    | "smallTalk"
+    | "you"
+    | "bot"
+    | "writeInvitacion"
+  >;
+}) {
   const [userId, setUserId] = useState<string | null>(null);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState("");
@@ -70,11 +82,9 @@ export default function Chat() {
 
   return (
     <div className={styles.chatWrapper}>
-      {!userId && (
-        <p className={styles.welcome}>Вітаю, пропоную познайомитись!</p>
-      )}
+      {!userId && <p className={styles.welcome}>{dict.welcomeStranger}</p>}
 
-      <p className={styles.chatHeader}>Про що сьогодні поговоримо?</p>
+      <p className={styles.chatHeader}>{dict.smallTalk}</p>
 
       <div className={styles.messageList}>
         {messages.map((msg, index) => (
@@ -84,7 +94,7 @@ export default function Chat() {
               msg.role === "user" ? styles.userMessage : styles.botMessage
             }`}
           >
-            <strong>{msg.role === "user" ? "Ви:" : "Бот:"}</strong>{" "}
+            <strong>{msg.role === "user" ? dict.you : dict.bot}</strong>{" "}
             {msg.content}
           </div>
         ))}
@@ -95,7 +105,7 @@ export default function Chat() {
         <textarea
           value={input}
           ref={inputRef}
-          placeholder="Напишіть щось..."
+          placeholder={dict.writeInvitacion}
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
           disabled={loading}
@@ -106,7 +116,7 @@ export default function Chat() {
           disabled={loading}
           className={styles.button}
         >
-          Надіслати
+          {dict.sendButton}
         </button>
       </div>
     </div>

@@ -24,5 +24,10 @@
   "no": "Non",
   "modalPaceholder": "Entrez un pseudo",
   "greeting": "Bienvenue sur le chat,",
-  "linkAuth": "Pour sauvegarder vos paramètres et votre historique de communication, vous pouvez vous inscrire"
+  "linkAuth": "Pour sauvegarder vos paramètres et votre historique de communication, vous pouvez vous inscrire",
+  "welcomeStranger": "Bienvenue, je vous propose de faire connaissance !",
+  "smallTalk": "De quoi allons-nous parler aujourd'hui ?",
+  "you": "Vous :",
+  "bot": "Bot :",
+  "writeInvitacion": "Écrivez quelque chose..."
 }

@@ -24,5 +24,10 @@
   "no": "No",
   "modalPaceholder": "Introduce un apodo",
   "greeting": "Bienvenido al chat,",
-  "linkAuth": "Para guardar su configuración y su historial de comunicaciones, puede registrarse"
+  "linkAuth": "Para guardar su configuración y su historial de comunicaciones, puede registrarse",
+  "welcomeStranger": "¡Bienvenido/a, te propongo que nos conozcamos!",
+  "smallTalk": "¿De qué hablamos hoy?",
+  "you": "Usted:",
+  "bot": "Bot:",
+  "writeInvitacion": "Escribe algo..."
 }

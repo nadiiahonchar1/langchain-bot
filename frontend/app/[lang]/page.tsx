@@ -14,7 +14,16 @@ export default async function Home({
     <div>
       <main className={styles.main}>
         <h1>{dict.welcomeMessage}</h1>
-        <Chat />
+        <Chat
+          dict={{
+            sendButton: dict.sendButton,
+            welcomeStranger: dict.welcomeStranger,
+            smallTalk: dict.smallTalk,
+            you: dict.you,
+            bot: dict.bot,
+            writeInvitacion: dict.writeInvitacion,
+          }}
+        />
       </main>
     </div>
   );
