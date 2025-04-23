@@ -2,7 +2,13 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  align-items: center;
+}
+
+@media (max-width: 786px) {
+  .languageSwitcher {
+    align-items: center;
+    margin-bottom: 8px;
+  }
 }
 
 .selectWrapper {

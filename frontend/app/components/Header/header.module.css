@@ -3,8 +3,15 @@
   background: var(--text);
   color: var(--userMessage);
   width: 100%;
-  padding: 1rem;
+  padding: 8px;
   align-items: center;
   justify-content: space-evenly;
-  gap: 24px;
+  gap: 8px;
+}
+
+@media (max-width: 786px) {
+  .header {
+    display: block;
+    text-align: center;
+  }
 }

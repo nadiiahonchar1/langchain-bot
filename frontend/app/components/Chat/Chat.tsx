@@ -21,6 +21,7 @@ export default function Chat({
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showIntro, setShowIntro] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLTextAreaElement | null>(null);
 
@@ -31,7 +32,10 @@ export default function Chat({
     if (storedId) {
       setUserId(storedId);
       getChat(storedId)
-        .then((data) => setMessages(data))
+        .then((data) => {
+          setMessages(data);
+          setShowIntro(true);
+        })
         .catch((error) => console.error("Failed to load chat history:", error));
     }
 
@@ -48,6 +52,7 @@ export default function Chat({
 
   const handleSend = async () => {
     if (!input.trim()) return;
+    setShowIntro(false);
 
     const userMessage: ChatMessage = { role: "user", content: input };
     setMessages((prev) => [...prev, userMessage]);
@@ -84,8 +89,6 @@ export default function Chat({
     <div className={styles.chatWrapper}>
       {!userId && <p className={styles.welcome}>{dict.welcomeStranger}</p>}
 
-      <p className={styles.chatHeader}>{dict.smallTalk}</p>
-
       <div className={styles.messageList}>
         {messages.map((msg, index) => (
           <div
@@ -102,6 +105,7 @@ export default function Chat({
       </div>
 
       <div className={styles.inputWrapper}>
+        {showIntro && <p className={styles.chatHeader}>{dict.smallTalk}</p>}
         <textarea
           value={input}
           ref={inputRef}

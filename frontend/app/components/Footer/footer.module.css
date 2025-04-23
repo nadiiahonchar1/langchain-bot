@@ -3,19 +3,18 @@
   background: var(--text);
   color: var(--userMessage);
   width: 100%;
-  padding: 1rem;
-  /* justify-content: center; */
+  padding: 8px;
   align-items: center;
   justify-content: space-evenly;
-  gap: 24px;
-}
-/* 
-footer a {
-  display: flex;
-  align-items: center;
   gap: 8px;
 }
+@media (max-width: 786px) {
+  .footer {
+    display: block;
+    text-align: center;
+  }
 
-footer img {
-  flex-shrink: 0;
-} */
+  .footer p {
+    margin-bottom: 8px;
+  }
+}
