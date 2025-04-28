@@ -31,7 +31,6 @@ export const deleteChatHistory = async (userId) => {
   try {
     const chatRef = db.collection('chats').doc(userId);
     await chatRef.delete();
-    console.log(`Chat history for user ${userId} deleted successfully`);
   } catch (error) {
     console.error('Error deleting chat history:', error);
     throw error;

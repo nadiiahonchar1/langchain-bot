@@ -29,7 +29,7 @@ export const postChat = async (
   if (userId) {
     body.userId = userId;
   }
-
+  
   const res = await fetch(`${API_BASE_URL}/api/chat`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },

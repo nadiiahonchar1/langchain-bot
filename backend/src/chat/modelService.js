@@ -12,13 +12,13 @@ const trimmer = trimMessages({
 });
 
 export const callModel = async (state) => {
-  const { userId, messages } = state;
+  const { userId, messages, language, style } = state;
 
   const trimmedMessage = await trimmer.invoke(messages);
   const prompt = await promptTemplate.invoke({
     messages: trimmedMessage,
-    language: state.language,
-    style: state.style,
+    language,
+    style,
   });
 
   const response = await model.invoke(prompt);

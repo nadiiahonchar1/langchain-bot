@@ -52,6 +52,9 @@ export default function Chat({
 
   const handleSend = async () => {
     if (!input.trim()) return;
+
+    const currentUserId = userId ?? localStorage.getItem("userId");
+
     setShowIntro(false);
 
     const userMessage: ChatMessage = { role: "user", content: input };
@@ -60,7 +63,7 @@ export default function Chat({
     setLoading(true);
 
     try {
-      const res = await postChat(input, userId ?? undefined);
+      const res = await postChat(input, currentUserId || undefined);
       const botMessage: ChatMessage = {
         role: "system",
         content: res.content,

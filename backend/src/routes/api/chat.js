@@ -24,6 +24,7 @@ router.post('/', async (req, res) => {
         const userSettings = await getUserSettings(userId);
         language = userSettings.language || language;
         style = userSettings.style || style;
+
       } catch (error) {
         console.warn('Failed to fetch user settings, using defaults:', error);
       }
@@ -36,6 +37,7 @@ router.post('/', async (req, res) => {
     if (!content) {
       return res.status(500).json({ error: 'No content in response' });
     }
+
 
     res.json({ content });
   } catch (error) {
