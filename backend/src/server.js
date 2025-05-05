@@ -4,8 +4,13 @@ import chatRouter from './routes/api/chat.js';
 import userRouter from './routes/api/users.js';
 
 const app = express();
+const corsOptions = {
+  origin: 'https://tangerine-rolypoly-88014e.netlify.app',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type'],
+};
 
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 
 app.use('/api/users', userRouter);
