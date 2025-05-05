@@ -4,7 +4,6 @@ import "../globals.css";
 import { getDictionary } from "./dictionaries";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/footer";
-import { SUPPORTED_LANGUAGES } from "../constants/languages";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,19 +20,49 @@ export const metadata: Metadata = {
   description: "This bot will provide you with a great conversation partner",
 };
 
-export async function generateStaticParams() {
-  return SUPPORTED_LANGUAGES.map((lang) => ({ lang }));
+// interface RootLayoutProps {
+//   children: React.ReactNode;
+//   params: Promise<{ lang: "uk" | "en" | "es" | "fr" | "de" }>;
+// }
+
+// export default async function RootLayout({
+//   children,
+//   params,
+// }: RootLayoutProps) {
+//   const { lang } = await params;
+//   const dict = await getDictionary(lang);
+
+//   return (
+//     <html lang={lang}>
+//       <body className={`${geistSans.variable} ${geistMono.variable} page`}>
+//         <Header dict={dict} />
+//         {children}
+//         <Footer dict={dict} />
+//       </body>
+//     </html>
+//   );
+// }
+
+interface RootLayoutProps {
+  children: React.ReactNode;
+  params: Promise<{ lang: string }>; // Оголошуємо як Promise
 }
 
 export default async function RootLayout({
   children,
   params,
-}: Readonly<{
-  children: React.ReactNode;
-  params: { lang: (typeof SUPPORTED_LANGUAGES)[number] };
-}>) {
-  const { lang } = await params;
-  const dict = await getDictionary(lang);
+}: RootLayoutProps) {
+  const resolvedParams = await params; // Розгортаємо Promise
+  const { lang } = resolvedParams;
+  const supportedLangs = ["uk", "en", "es", "fr", "de"] as const;
+  type SupportedLang = (typeof supportedLangs)[number];
+
+  if (!supportedLangs.includes(lang as SupportedLang)) {
+    console.error(`Unsupported language: ${lang}`);
+    return <div>Unsupported language</div>;
+  }
+
+  const dict = await getDictionary(lang as SupportedLang);
 
   return (
     <html lang={lang}>

@@ -1,3 +1,7 @@
+// import { SUPPORTED_LANGUAGES } from "../constants/languages";
+
+type SupportedLanguage = (typeof SUPPORTED_LANGUAGES)[number];
+
 type Dictionary = {
   [key: string]: string;
   style: Record<string, string>;
