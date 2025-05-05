@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import { getDictionary } from "./dictionaries";
+import { SUPPORTED_LANGUAGES } from "../constants/languages";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/footer";
 
@@ -20,49 +21,24 @@ export const metadata: Metadata = {
   description: "This bot will provide you with a great conversation partner",
 };
 
-// interface RootLayoutProps {
-//   children: React.ReactNode;
-//   params: Promise<{ lang: "uk" | "en" | "es" | "fr" | "de" }>;
-// }
-
-// export default async function RootLayout({
-//   children,
-//   params,
-// }: RootLayoutProps) {
-//   const { lang } = await params;
-//   const dict = await getDictionary(lang);
-
-//   return (
-//     <html lang={lang}>
-//       <body className={`${geistSans.variable} ${geistMono.variable} page`}>
-//         <Header dict={dict} />
-//         {children}
-//         <Footer dict={dict} />
-//       </body>
-//     </html>
-//   );
-// }
-
 interface RootLayoutProps {
   children: React.ReactNode;
-  params: Promise<{ lang: string }>; // Оголошуємо як Promise
+  params: Promise<{ lang: string }>;
 }
 
 export default async function RootLayout({
   children,
   params,
 }: RootLayoutProps) {
-  const resolvedParams = await params; // Розгортаємо Promise
+  const resolvedParams = await params;
   const { lang } = resolvedParams;
-  const supportedLangs = ["uk", "en", "es", "fr", "de"] as const;
-  type SupportedLang = (typeof supportedLangs)[number];
 
-  if (!supportedLangs.includes(lang as SupportedLang)) {
+  if (!SUPPORTED_LANGUAGES.includes(lang as SupportedLanguage)) {
     console.error(`Unsupported language: ${lang}`);
     return <div>Unsupported language</div>;
   }
 
-  const dict = await getDictionary(lang as SupportedLang);
+  const dict = await getDictionary(lang as SupportedLanguage);
 
   return (
     <html lang={lang}>

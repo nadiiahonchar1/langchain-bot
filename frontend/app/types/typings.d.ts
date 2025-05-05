@@ -1,5 +1,3 @@
-// import { SUPPORTED_LANGUAGES } from "../constants/languages";
-
 type SupportedLanguage = (typeof SUPPORTED_LANGUAGES)[number];
 
 type Dictionary = {
